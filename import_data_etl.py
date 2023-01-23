@@ -31,7 +31,7 @@ except(Exception, Error) as connection_error:
 
 else :
     try :
-        cursor.execute(nba_select_query.select_query)
+        cursor.execute(nba_select_nba_landing_nba_player_data_query.select_query)
         print(cursor.fetchall())
     
     except (Exception, Error) as sql_error:

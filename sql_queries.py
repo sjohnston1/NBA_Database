@@ -2,7 +2,7 @@
 
 create_schema_nba = ('''CREATE SCHEMA IF NOT EXISTS NBA;''')
 create_schema_nba_landing = ('''CREATE SCHEMA IF NOT EXISTS NBA_LANDING;''')
-create_table_nba_landing_nba_player_data = ('''CREATE TABLE NBA_LANDING.NBA_PLAYER_DATA (
+create_table_nba_landing_nba_player_data = ('''CREATE TABLE IF NOT EXISTS NBA_LANDING.NBA_PLAYER_DATA (
 _id varchar(50)
 ,birthDate varchar(50)
 ,birthPlace varchar(100)
@@ -28,9 +28,18 @@ _id varchar(50)
 ,shoots varchar(20)
 ,weight varchar(10));''')
 
+create_table_nba_landing_nba_salary_data = ('''CREATE TABLE IF NOT EXISTS NBA_LANDING.NBA_SALARY_DATA (
+league varchar(150)
+,player_id varchar(50)
+,salary varchar(150)
+,season varchar(150)
+,season_end varchar(150)
+,season_start varchar(150)
+,team varchar(150));''')
 # DML Queries
 
 nba_select = ('''SELECT * FROM INFORMATION_SCHEMA.COLUMNS;''')
+nba_select_nba_landing_nba_player_data = ('''SELECT * FROM NBA_LANDING.NBA_PLAYER_DATA;''')
 
 # Class Definitions
 
@@ -52,3 +61,5 @@ nba_select_query = SQLSelect(nba_select)
 create_schema_nba = SQLCreateSchema(create_schema_nba)
 create_schema_nba_landing = SQLCreateSchema(create_schema_nba_landing)
 create_table_nba_landing_nba_player_data = SQLCreateTable(create_table_nba_landing_nba_player_data)
+create_table_nba_landing_nba_salary_data = SQLCreateTable(create_table_nba_landing_nba_salary_data)
+nba_select_nba_landing_nba_player_data_query = SQLSelect(nba_select_nba_landing_nba_player_data)

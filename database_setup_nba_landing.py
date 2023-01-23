@@ -34,7 +34,26 @@ else :
         cursor.execute(create_schema_nba_landing.create_schema)
         connection.commit();
 
+    except (Exception, Error) as sql_error:
+        print(sql_error)
+        if connection:
+            connection.close()
+            print("Successful disconnection from the database", target_db_name)
+            sys.exit()
+
+    try :
         cursor.execute(create_table_nba_landing_nba_player_data.create_table)
+        connection.commit();
+
+    except (Exception, Error) as sql_error:
+        print(sql_error)
+        if connection:
+            connection.close()
+            print("Successful disconnection from the database", target_db_name)
+            sys.exit()
+
+    try:
+        cursor.execute(create_table_nba_landing_nba_salary_data.create_table)
         connection.commit();
     
     except (Exception, Error) as sql_error:
