@@ -49,14 +49,19 @@ else :
 
         player_data_frame = pandas.read_csv(memory_buffer, sep='|')
         
+        #select *
         #print(player_data_frame.to_string())
         
+        #prints out specific column, kinda like select coulmn
         #print(player_data_frame[['name']])
 
-        #print(player_data_frame.loc[1:100,['name']])
+        #prints out the value from ids x:y
+        #print(player_data_frame.loc[0:100,['name']])
 
+        #prints out the info for a value
         #print(player_data_frame.loc[0,:])
-
+        
+        #adding a value based on another column, kinda like a case statement
         '''def if_team(teamname):
             if teamname == 'Portland Trail Blazers':
                 return 'hype'
@@ -67,14 +72,16 @@ else :
 
         print(player_data_frame.to_string())'''
         
+        #prints out for x value, similar to where value        
         #print(player_data_frame[player_data_frame['draft_team'] == 'Portland Trail Blazers'])
 
-        filter = player_data_frame['draft_team'] == 'Portland Trail Blazers'
+        #where is similar to sql where, but doesn't filter out nulls/nas. Need to use dropna()
+        '''filter = player_data_frame['draft_team'] == 'Portland Trail Blazers'
         filter2 = player_data_frame['draft_team'] == 'Milwaukee Bucks'
 
         player_data_frame.where(filter | filter2,inplace=True)
 
-        print(player_data_frame.dropna().to_string())
+        print(player_data_frame.dropna().to_string())'''
 
     except (Exception, Error) as sql_error:
         print(sql_error)
